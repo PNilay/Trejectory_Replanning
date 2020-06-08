@@ -324,9 +324,6 @@ public void Estimated_Path(Gridworld Brain, int index, int g_priority, boolean F
     //System.out.print("( "+end.row+","+ end.column+" ) <--");
     end = end.A_star_parent;
   }
-
-
-
   }
   Brain.SetIsVisited();
   Brain.get_node_at(row,col).blocked = 'O';

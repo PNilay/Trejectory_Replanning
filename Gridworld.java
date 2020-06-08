@@ -2,6 +2,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.File;
 
 public class Gridworld{
 
@@ -130,8 +131,13 @@ public void Print_List()
 
 public void Print_And_Save(int gridID) throws IOException
 {
-
-	FileWriter fileWriter = new FileWriter(gridID + ".txt", true); //Set true for append mode
+  // File file = new File(".\\Gridworld");
+  File file = new File(".\\Gridworlds");
+  if(!file.exists())
+  {
+    new File(".\\Gridworlds").mkdirs();
+  }
+	FileWriter fileWriter = new FileWriter(".\\Gridworlds\\"+gridID + ".txt", true); //Set true for append mode
 	PrintWriter printWriter = new PrintWriter(fileWriter);
 
 	for (int r = 0; r < this.row; r++) {
@@ -153,8 +159,12 @@ public void Print_And_Save(int gridID) throws IOException
 
 public void Save_Estimated(String name, int gridID) throws IOException
 {
-
-	FileWriter fileWriter = new FileWriter(name + "_"+ gridID + ".txt", true); //Set true for append mode
+  File file = new File(".\\Temporary_Files");
+  if(!file.exists())
+  {
+    new File(".\\Temporary_Files").mkdirs();
+  }
+	FileWriter fileWriter = new FileWriter(".\\Temporary_Files\\"+name + "_"+ gridID + ".txt", true); //Set true for append mode
 	PrintWriter printWriter = new PrintWriter(fileWriter);
 
 	for (int r = 0; r < this.row; r++) {
@@ -171,7 +181,6 @@ public void Save_Estimated(String name, int gridID) throws IOException
 	}
 
 	printWriter.close();
-
 }
 
 
@@ -187,8 +196,8 @@ public void Print_Visit_List()
 
 public void Create_Grid()
 {
-  this.Assign_Index();
-  this.Assign_neighbors();
+  this.Assign_Index(); // Assign each cell of the matrix with it's index number
+  this.Assign_neighbors(); //
   //System.out.println("Initial Grid:");
   //this.Print_List();
 }

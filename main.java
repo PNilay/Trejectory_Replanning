@@ -65,40 +65,7 @@ public static void main(String[] args) throws IOException {
 					A9.Initialize_Adaptive_Astar(p9,2);
 					break;
 			}
-
-		//	Gridworld p1 = askAndLoad();
-			//System.out.println("+\n\n" + "Loaded World: ");
-			//p1.Print_List();
-			//A_Star A = new A_Star(p1.startRow,p1.startCol,p1.goleRow, p1.goleCol);
-			//A.Initialize_Repeted_Forward_Astar(p1,0);
-		//	A.Initialize_Repeted_Forward_Astar(P1,1);
-		//	A.Initialize_Repeted_Forward_Astar(P1,2);
-
-		//  A.Initialize_Adaptive_Astar(p1,0);
-		//  A.Initialize_Adaptive_Astar(p1,1);
-		//  A.Initialize_Adaptive_Astar(P1,2);
-
-		// A.Initialize_Repeted_Backward_Astar(p1,0);
-	  // A.Initialize_Repeted_Backward_Astar(p1,1);
-		// A.Initialize_Repeted_Backward_Astar(p1,2);
-
-
-
-		/*
-		A_Star A = new A_Star(p1.startRow,p1.startCol,p1.goleRow, p1.goleCol);
-
-			long StartTime = System.currentTimeMillis();
-		 A.Initialize_Repeted_Backward_Astar(p1,0);
-//A.Initialize_Repeted_Forward_Astar(p1,0);
-		 	//A.Initialize_Adaptive_Astar(p1,0);
-		 long EndTime = System.currentTimeMillis();
-		 System.out.println("Time: "+ (EndTime - StartTime));
-
-
-			//A.Initialize_Adaptive_Astar(p1,1);
-			//A.Initialize_Repeted_Backward_Astar(p1,0);
-			*/
-=	}
+	}
 
 public static int main_menu()
 {
@@ -158,12 +125,7 @@ public static int main_menu()
 
     p1.Assign_Start_End(startRow,startCol,goalRow, goalCol);
 		p1.Print_And_Save(gridID);
-
-    //A_Star A = new A_Star(startRow,startCol,goalRow, goalCol);
-    //A.Initialize_Forward_Astar(p1,0);
-
 	}
-
 
 
 //searches all nodes through dfs
@@ -490,7 +452,7 @@ public static void createObstacles(Gridworld p1, node head, node parent) {
   			break;
   		}
 
-  		String loadFile = id + ".txt";
+  		String loadFile = ".\\Gridworlds\\"+id + ".txt";
   		Gridworld loadedWorld = new Gridworld(101, 101);
   		loadedWorld.Create_Grid();
 
@@ -558,8 +520,10 @@ public static void createObstacles(Gridworld p1, node head, node parent) {
   			//goal node: denoted with G
   			//beginning of obstacles node: denoted with X
 				DFS n =  new DFS();
+
 				n.createStartingPoints(p1);
 				p1.Print_And_Save(i);
+
 
   			//createStartingPoints(p1,i);
   		}

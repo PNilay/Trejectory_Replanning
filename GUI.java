@@ -35,7 +35,7 @@ public GUI(Gridworld gr, node t)
 public class Grid extends JPanel{
   public void paint(Graphics g)
   {
-    System.out.println("Graphics!!!!");
+    System.out.println("Graphics!!!! CHANGED2");
   /*  for(int i =0; i<grid.row; i++)
     {
       for(int j = 0; j<grid.column; j++)
@@ -113,8 +113,8 @@ public class Grid extends JPanel{
                     g.fillRect((500/(grid.column-1))*end.column,(500/(grid.row-1))*end.row,(500/(grid.column-1)),(500/(grid.row-1)));
                     end = end.A_star_parent;
                   }
-
-                /*  for(int i =0; i<grid.row; i++)
+                /*
+               for(int i =0; i<grid.row; i++)
                   {
                     for(int j = 0; j<grid.column; j++)
                     {
@@ -126,11 +126,10 @@ public class Grid extends JPanel{
                     }
                   }*/
               }
-/*
-//Print path on environment
-      if(temp != null)
-      {
 
+//Print path on environment
+      /*if(temp != null)
+      {
         for(int i =0; i<grid.row; i++)
         {
           for(int j = 0; j<grid.column; j++)
@@ -143,7 +142,7 @@ public class Grid extends JPanel{
           }
         }
 
-    /*    for(int i =0; i<grid.row; i++)
+     for(int i =0; i<grid.row; i++)
         {
           for(int j = 0; j<grid.column; j++)
           {

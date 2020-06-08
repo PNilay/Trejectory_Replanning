@@ -100,6 +100,7 @@ public void Print_Visit_List(Gridworld grid)
     return newnode;
   }
 
+
   public int Get_Index(int row, int column, Gridworld grid) //Given row  and column returns index
   {
     return row*grid.column + column;
@@ -109,6 +110,7 @@ public void Print_Visit_List(Gridworld grid)
   {
     this.Initialize_DFS(grid);
     this.createObstacles(grid);
+    System.out.println("Create obstacles done");
     //System.out.println("done making grid");
   }
   public void Initialize_DFS(Gridworld grid) // This function randomlly set starting position and gole position
@@ -152,38 +154,40 @@ public void Print_Visit_List(Gridworld grid)
 //Check which neighbors are unvisited and unblocked
       int possibilities =0;
       String binary = "";
+
       //Decide if next block shoulde be blocked or unblocked with 30% and 70% probability:
       double decide = Math.random(); // if decide < 0.3 then next block should be blocked otherwise unblocked
       //first check how many negighbors does head cell have, and how many of them is unvisited
-      if(this.isEmpty() != true)
-      {
-      if(this.head.data.up != null)
-      {
-        if(this.head.data.up.visitState == false)
-        {
-          binary = binary + "1";
-          possibilities = possibilities+1;
-        }
-        else
-        {
-          binary = binary +"0";
-        }
 
-      }
-      else{binary = binary +"0";}
-
-      if(this.head.data.right != null)
+      if(this.isEmpty() != true) // Iif head is not null
       {
-        if(this.head.data.right.visitState == false)
+        if(this.head.data.up != null)
         {
-          binary = binary +"1";
-          possibilities = possibilities+1;
+          if(this.head.data.up.visitState == false)
+          {
+            binary = binary + "1";
+            possibilities = possibilities+1;
+          }
+          else
+          {
+            binary = binary +"0";
+          }
+
         }
-        else
+        else{binary = binary +"0";}
+
+        if(this.head.data.right != null)
         {
-          binary = binary +"0";
-        }
-      }else{binary = binary +"0";}
+          if(this.head.data.right.visitState == false)
+          {
+            binary = binary +"1";
+            possibilities = possibilities+1;
+          }
+          else
+          {
+            binary = binary +"0";
+          }
+        }else{binary = binary +"0";}
 
       if(this.head.data.down != null)
       {
@@ -216,6 +220,7 @@ public void Print_Visit_List(Gridworld grid)
       binary = "0000";
       possibilities =0;
     }
+
       switch(possibilities)
       {
         case 0://If head cell has no unvisited negighbors, then back track to parent node, if there are still unvisted nodes
@@ -238,12 +243,12 @@ public void Print_Visit_List(Gridworld grid)
               this.head = this.Get_unvisitedNode(grid);
               this.head.data.visitState = true;
               this.Total_Visited = this.Total_Visited +1;
-              createObstacles(grid);
+              this.createObstacles(grid);
             }
             else if(this.Total_Visited < grid.row*grid.column && this.isEmpty() == false)//Back track to parent node
             {
                 this.Deque_Front();
-                createObstacles(grid);
+                this.createObstacles(grid);
             }
 
             break;
@@ -255,14 +260,14 @@ public void Print_Visit_List(Gridworld grid)
                 this.head.data.up.blocked = 'X';// assign 1 to set cell as blocked cell
                 this.head.data.up.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
               else
               {
                 this.Prepend(this.head.data.up);
                 this.head.data.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
             }
 
@@ -273,14 +278,14 @@ public void Print_Visit_List(Gridworld grid)
                 this.head.data.right.blocked = 'X';// assign 1 to set cell as blocked cell
                 this.head.data.right.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
               else
               {
                 this.Prepend(this.head.data.right);
                 this.head.data.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
-               createObstacles(grid);
+               this.createObstacles(grid);
               }
             }
             else if(binary.equals("0010") == true) // it has only down neighbor
@@ -291,7 +296,7 @@ public void Print_Visit_List(Gridworld grid)
                 this.head.data.down.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
 
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
               else
               {
@@ -299,7 +304,7 @@ public void Print_Visit_List(Gridworld grid)
                 this.head.data.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
 
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
             }
             else // it has only left neighbor
@@ -310,7 +315,7 @@ public void Print_Visit_List(Gridworld grid)
                 this.head.data.left.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
 
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
               else
               {
@@ -318,7 +323,7 @@ public void Print_Visit_List(Gridworld grid)
                 this.head.data.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
 
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
             }
 
@@ -335,7 +340,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.up.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -343,7 +348,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.right.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
               else
@@ -354,7 +359,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -362,7 +367,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
             }
@@ -377,7 +382,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.right.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -385,7 +390,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.down.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
               else
@@ -396,7 +401,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -404,7 +409,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
             }
@@ -419,7 +424,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.down.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -427,7 +432,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.left.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
               else
@@ -438,7 +443,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -446,7 +451,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
             }
@@ -461,7 +466,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.up.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -469,7 +474,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.left.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
               else
@@ -480,7 +485,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -488,7 +493,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
             }
@@ -503,7 +508,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.up.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -511,7 +516,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.down.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
               else
@@ -522,7 +527,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -530,7 +535,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
             }
@@ -545,7 +550,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.right.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -553,7 +558,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.left.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
               else
@@ -564,7 +569,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -572,7 +577,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
             }
@@ -589,7 +594,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.up.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else if(three_random >0.33 && three_random <0.66)
                 {
@@ -597,7 +602,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.right.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -605,7 +610,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.down.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
               else
@@ -616,7 +621,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else if(three_random >0.33 & three_random< 0.66)
                 {
@@ -624,7 +629,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -632,7 +637,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
             }
@@ -647,7 +652,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.right.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else if(three_random >0.33 && three_random <0.66)
                 {
@@ -655,7 +660,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.down.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -663,7 +668,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.left.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
               else
@@ -674,7 +679,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else if(three_random >0.33 & three_random< 0.66)
                 {
@@ -682,7 +687,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -690,7 +695,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
             }
@@ -705,7 +710,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.up.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else if(three_random >0.33 && three_random <0.66)
                 {
@@ -713,7 +718,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.left.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -721,7 +726,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.down.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                createObstacles(grid);
+                this.createObstacles(grid);
                 }
               }
               else
@@ -732,7 +737,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else if(three_random >0.33 & three_random< 0.66)
                 {
@@ -740,7 +745,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                 createObstacles(grid);
+                 this.createObstacles(grid);
                 }
                 else
                 {
@@ -748,7 +753,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
             }
@@ -763,7 +768,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.up.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else if(three_random >0.33 && three_random <0.66)
                 {
@@ -771,7 +776,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.right.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -779,7 +784,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.left.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
               else
@@ -790,7 +795,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else if(three_random >0.33 & three_random< 0.66)
                 {
@@ -798,7 +803,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
                 else
                 {
@@ -806,7 +811,7 @@ public void Print_Visit_List(Gridworld grid)
                   this.head.data.visitState = true;
                   this.Total_Visited = this.Total_Visited +1;
 
-                  createObstacles(grid);
+                  this.createObstacles(grid);
                 }
               }
             }
@@ -820,28 +825,28 @@ public void Print_Visit_List(Gridworld grid)
                 this.head.data.up.blocked = 'X';// assign 1 to set cell as blocked cell
                 this.head.data.up.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
               else if(four_random >0.25 && four_random <0.50)
               {
                 this.head.data.right.blocked = 'X';// assign 1 to set cell as blocked cell
                 this.head.data.right.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
               else if(four_random >0.50 && four_random<0.75)
               {
                 this.head.data.down.blocked = 'X';// assign 1 to set cell as blocked cell
                 this.head.data.down.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
               else
               {
                 this.head.data.left.blocked = 'X';// assign 1 to set cell as blocked cell
                 this.head.data.left.visitState = true;
                 this.Total_Visited = this.Total_Visited+1;
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
             }
             else
@@ -851,28 +856,28 @@ public void Print_Visit_List(Gridworld grid)
                 this.Prepend(this.head.data.up);
                 this.head.data.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
               else if(four_random >0.25 & four_random< 0.50)
               {
                 this.Prepend(this.head.data.right);
                 this.head.data.visitState = true;
                 this.Total_Visited =this.Total_Visited +1;
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
               else if(four_random>0.50 && four_random<0.75)
               {
                 this.Prepend(this.head.data.down);
                 this.head.data.visitState = true;
                 this.Total_Visited = this.Total_Visited +1;
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
               else
               {
                 this.Prepend(this.head.data.left);
                 this.head.data.visitState = true;
                 this.Total_Visited = this.Total_Visited+1;
-                createObstacles(grid);
+                this.createObstacles(grid);
               }
             }
             break;
