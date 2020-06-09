@@ -20,5 +20,7 @@ javac main.java
 java main
 ```
 These command will allows user to choose one of the options from following menu:  
-![Main Menu](/Images/menu.PNG)
+![Main Menu](/Images/menu.PNG)  
+
+#### Sample Output
 
