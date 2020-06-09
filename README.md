@@ -8,4 +8,4 @@ A* algorithm is a very popular path finding and graph traversal algorithm based 
 * h-value [h(s)] (Heuristic value):  The estimated distance between the current state s and final state. 
 * f-value [f(s)] : f(s) = g(s) + h(s), estimates the distance from the start state to the gole state via state s.  
 
-The  A* algorithm finds a shortest path, by taking the f-value into account. The algorithm selects the smallest f-value cell and node moves to that node. The process continues until the algorithm reaches its destination node. 
+The  A* algorithm finds a shortest path, by taking the f-value into account. The algorithm selects the smallest f-value node and moves to that node. The process continues until the algorithm reaches its destination node. 
