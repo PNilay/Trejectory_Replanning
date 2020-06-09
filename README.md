@@ -8,4 +8,8 @@ A* algorithm is a very popular path finding and graph traversal algorithm based 
 * h-value [h(s)] (Heuristic value):  The estimated distance between the current state s and final state. 
 * f-value [f(s)] : f(s) = g(s) + h(s), estimates the distance from the start state to the gole state via state s.  
 
-The  A* algorithm finds a shortest path, by taking the f-value into account. The algorithm selects the smallest f-value node and moves to that node. The process continues until the algorithm reaches its destination node. 
+The  A* algorithm finds a shortest path, by taking the f-value into account. The algorithm selects the smallest f-value node and moves to that node. The process continues until the algorithm reaches its destination node.  
+
+## Implementation:
+The program is designed to test and visualize and improve A* algorithms with different parameters and modification. The program creates a 100 X 100 square grid with a start and goal node and also having several obstacles, scattered randomly. The program creates 50 grids and stores them in a .txt file to be used by later commands. The user can select the type of A* algorithms out of nine different options, to find the shortest path between start and goal node. Program outputs GUI tab with 100 X 100 maze and calculated path from source to destination node. 
+
