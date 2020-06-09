@@ -22,6 +22,9 @@ java main
 These command will allows user to choose one of the options from following menu:  
 ![Main Menu](/Images/menu.PNG)  
 
-### Sample Output
-![Option2_Grid30](/Images/Option_2_Grid_30.PNG =50X50) ![Option6_Grid45](/Images/Option_6_Grid_45.PNG) ![Option10_Grid19](/Images/Option_10_Grid_19.PNG) 
+### Sample Output  
+
+<img src="/Images/Option_2_Grid_30.PNG" width="50">  
+
+![Option6_Grid45](/Images/Option_6_Grid_45.PNG) ![Option10_Grid19](/Images/Option_10_Grid_19.PNG) 
 
