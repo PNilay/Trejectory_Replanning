@@ -23,5 +23,5 @@ These command will allows user to choose one of the options from following menu:
 ![Main Menu](/Images/menu.PNG)  
 
 ### Sample Output
-![Option2_Grid30](/Images/Option_2_Grid_30.PNG) ![Option6_Grid45](/Images/Option_6_Grid_45.PNG) ![Option10_Grid19](/Images/Option_10_Grid_19.PNG) 
+![Option2_Grid30](/Images/Option_2_Grid_30.PNG){:height="50%" width="50%"} ![Option6_Grid45](/Images/Option_6_Grid_45.PNG) ![Option10_Grid19](/Images/Option_10_Grid_19.PNG) 
 
