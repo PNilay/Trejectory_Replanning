@@ -24,5 +24,5 @@ These command will allows user to choose one of the options from following menu:
 
 ### Sample Output  
 
-<img src="/Images/Option_2_Grid_30.PNG" width="200"> <img src="/Images/Option_6_Grid_45.PNG" width="200"> <img src="/Images/Option_10_Grid_19.PNG" width="200">
+<img src="/Images/Option_2_Grid_30.PNG" width="250"> <img src="/Images/Option_6_Grid_45.PNG" style="border:0px;margin:0px;width="250" /> <img src="/Images/Option_10_Grid_19.PNG" width="250">
 
