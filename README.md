@@ -11,5 +11,14 @@ A* algorithm is a very popular path finding and graph traversal algorithm based 
 The  A* algorithm finds a shortest path, by taking the f-value into account. The algorithm selects the smallest f-value node and moves to that node. The process continues until the algorithm reaches its destination node.  
 
 ## Description
-The program is designed to test and visualize and improve A* algorithms with different parameters and modification. The program creates a 100 X 100 square grid with a start and goal node and also having several obstacles, scattered randomly. The program creates 50 grids and stores them in a .txt file to be used by later commands. The user can select the type of A* algorithms out of nine different options, to find the shortest path between start and goal node. Program outputs GUI tab with 100 X 100 maze and calculated path from source to destination node. 
+The program is designed to test and visualize and improve A* algorithms with different parameters and modification. The program creates a 100 X 100 square grid with a start and goal node and also having several obstacles, scattered randomly. The program creates 50 grids and stores them in a .txt file to be used by later commands. The user can select the type of A* algorithms out of nine different options, to find the shortest path between start and goal node. Program outputs GUI tab with 100 X 100 maze and calculated path from source to destination node.  
+
+## Usage
+The program can be run by using following commands in terminal:
+```
+javac main.java
+java main
+```
+These command will allows user to choose one of the options from following menu:  
+![Main Menu](/Images/menu.PNG)
 
